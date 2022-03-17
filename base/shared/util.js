@@ -1107,7 +1107,7 @@ PDFJS.createBlob = function createBlob(data, contentType) {
 };
 
 PDFJS.createObjectURL = (function createObjectURLClosure() {
-  if (typeof URL !== 'undefined' && URL.createObjectURL) {
+  if (typeof URL !== 'undefined' && URL.createObjectURL && Blob) {
     return function createObjectURL(data, contentType) {
       var blob = PDFJS.createBlob(data, contentType);
       return URL.createObjectURL(blob);
